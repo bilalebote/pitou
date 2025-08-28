@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pitou Bot</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #001f3f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+#intro img { width: 300px; }
+#intro p { color: white; font-size: 24px; font-weight: bold; margin-top:10px; }
+
+#container {
+  display: none; /* ستظهر بعد 5 ثوانٍ */
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+/* الهيدر */
+#header {
+  display: flex;
+  justify-content: flex-start; /* الصورة والنص من اليسار */
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: 15px;
+  background-color: white;
+  cursor: pointer;
+  width: 300px; /* نفس عرض الأزرار */
+  box-sizing: border-box;
+}
+
+/* الأزرار */
+#buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background-color: white;
+  font-weight: bold;
+  font-size: 16px;
+  width: 300px; /* نفس عرض الهيدر */
+  box-sizing: border-box;
+}
+
+/* ضبط حجم الصور داخل الأزرار والهيدر */
+#header img, .btn img {
+  max-height: 30px;
+  width: auto;
+  object-fit: contain;
+}
+</style>
+</head>
+<body>
+
+<div id="intro">
+  <img src="https://www2.0zz0.com/2025/08/27/13/298875046.jpg" alt="Pitou Bot">
+  <p>pitou bot</p>
+</div>
+
+<div id="container">
+  <div id="header"></div>
+  <div id="buttons"></div>
+</div>
+
+<script>
+setTimeout(() => {
+  // إزالة intro
+  document.getElementById('intro').remove();
+
+  const container = document.getElementById('container');
+  container.style.display = 'flex';
+
+  // إعداد الهيدر
+  const header = document.getElementById('header');
+  header.onclick = () => window.open('https://replit.com/signup','_blank');
+
+  const imgHeader = document.createElement('img');
+  imgHeader.src = 'https://www2.0zz0.com/2025/08/27/16/419193086.png';
+  const textHeader = document.createElement('span');
+  textHeader.textContent = 'Login to replit';
+  header.appendChild(imgHeader);
+  header.appendChild(textHeader);
+
+  // إنشاء الأزرار
+  const buttons = document.getElementById('buttons');
+  const btnData = [
+    {text:'Pitou Bot', img:'https://www2.0zz0.com/2025/08/27/13/298875046.jpg', link:'https://replit.com/@namewi8363/pitou'},
+    {text:'Download Termux', img:'https://www2.0zz0.com/2025/08/27/16/736566678.png', link:'https://www.mediafire.com/file/nklfyefq81w6vjg/com.termux_1022.apk/file'},
+    {text:'temp mail', img:'https://www2.0zz0.com/2025/08/27/16/696861878.png', link:'https://temp-mail.org/'},
+    {text:'How to use', img:'https://www2.0zz0.com/2025/08/27/16/130392106.png', link:'#'} // ضع رابط مناسب هنا
+  ];
+
+  btnData.forEach(data => {
+    const btn = document.createElement('button');
+    btn.className = 'btn';
+    btn.onclick = () => window.open(data.link,'_blank');
+    const img = document.createElement('img');
+    img.src = data.img;
+    btn.appendChild(img);
+    btn.appendChild(document.createTextNode(data.text));
+    buttons.appendChild(btn);
+  });
+
+}, 5000);
+</script>
+
+</body>
+</html>
